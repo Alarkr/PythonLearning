@@ -56,7 +56,6 @@ elif maquina == 2:  # Computador jogou Tesoura
     else:
         print('Jogada invalida')
 
-
 def restart_program():
     python = sys.executable
     os.execl(python, python, *sys.argv)
