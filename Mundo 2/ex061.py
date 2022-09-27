@@ -1,6 +1,12 @@
 print('-'*13)
 print('Gerador de PA')
 print('-'*13)
-
-t1 = int(input('Digite o primeiro termo: '))
-t2 = int(input('Digite o segundo termo: '))
+primeiro = int(input('Primeiro termo: '))
+razao = int(input('Razão da PA:'))
+termo = primeiro
+cont = 1
+while cont <= 10:
+    print('{} -> '.format(termo), end='')
+    termo += razao
+    cont += 1
+print('FIM')
