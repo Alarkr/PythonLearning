@@ -1,10 +1,41 @@
 from time import sleep
+
 print('==' * 21)
 print('{:^42}'.format('Calculos Empresariais'))
 print('==' * 21)
 
+def leiaInt(msg):
+    ok = False
+    valor = 0
+    while True:
+        n = str(input(msg))
+        if n.isnumeric():
+            valor = int(n)
+            ok = True
+        else:
+            print('\033[0;31mERRO: Digite um valor valido.\033[m')
+        if ok:
+            break
+    return (valor)
+
+
+def leiaFloat(msg):
+    ok = False
+    valor = 0
+    while True:
+        n = str(input(msg))
+        if n.isdecimal():
+            valor = float(n)
+            ok = True
+        else:
+            print('\033[0;31mERRO: Digite um valor valido.\033[m')
+        if ok:
+            break
+    return (valor)
+
+
 nome = str(input('Digite seu nome:')).strip().capitalize()
-salBruto = float(input('Qual o seu salario? -> '))
+salBruto = leiaFloat('Qual o seu salario? -> ')
 while True:
     print(f'Olá {nome}!! \n'
           'O que voce deseja?\n'
@@ -15,29 +46,27 @@ while True:
     print('~~' * 21)
 
     if op == 1:
-        hMes = int(input('Quantas Horas voce trabalhou esse mes?'))
-        hNor = float(input('Quantas horas 50% voce fez?-> '))
-        hCem = float(input('Quantos horas 100% voce trabalhou?-> '))
+        hMes = leiaInt('Quantas Horas voce trabalhou esse mes?')
+        hNor = leiaFloat('Quantas horas 50% voce fez?-> ')
+        hCem = leiaFloat('Quantos horas 100% voce trabalhou?-> ')
 
         hora = salBruto / hMes
         HEN = hora * 1.5
         HEC = hora + hora
-
         horaExtra50 = HEN * hNor
         horaExtra100 = HEC * hCem
         totalHE = horaExtra50 + horaExtra100
 
-        print(f'Valor da Hora normal: R${hora:.2f}')
+        print(f'Valor da 1 Hora Extra 50%: \033[34mR${HEN:.2f}\033[m\n'
+              f'Valor da 1 Hora Extra 100%: \033[34mR${HEC:.2f}\033[m')
         sleep(1)
-        print(f'Valor da Hora Extra 50%: R${HEN:.2f}')
+        print(f'Total de Horas Extras 50%: \033[34mR${horaExtra50:.2f}\033[m\n'
+              f'Total de Horas Extras 100%: \033[34mR${horaExtra100:.2f}\033[m')
         sleep(1)
-        print(f'Valor da Hora Extra 100%: R${HEC:.2f}')
-        sleep(1)
-        print(f'Valor de quanto vai receber Extra 50%: R${horaExtra50:.2f}')
-        sleep(1)
-        print(f'Valor de quanto vai receber Hora Extra 100%: R${horaExtra100:.2f}')
-        sleep(1)
-        print(f'O total de horas extra que voce ira receber é R${totalHE}')
+        print(f'O total de horas extra que voce ira receber é \033[34mR${totalHE:.2f}\033[m')
+        print(f'--Salario mais Horas Extras--\n'
+              f'\033[34m{salBruto:.2f} + {totalHE:.2f} = {salBruto + totalHE:.2f}\033[m')
+        print('~~' * 21)
 
     elif op == 2:
         hMes = int(input('Quantas Horas voce trabalhou esse mes?-> '))
@@ -52,9 +81,11 @@ while True:
         print('{:^40}'.format('Em contrução'))
         print('~~' * 21)
 
-    op2 = ' '
-    while op2 not in 'SN':
-        op2 = str(input('Deseja Realizar outra operação? [ S/N ]-> ')).upper().strip()[0]
-    if op2 == 'N':
+    op2 = leiaInt('Deseja Realizar outra operação?\n'
+                  '[ 1 ] Sim\n'
+                  '[ 2 ] Não\n'
+                  'Sua Opção-> ')
+    if op2 == 2:
         break
-print('Programa finalizado, Volte Sempre')
+
+print('\n\033[31mPrograma finalizado, Volte Sempre\033[m')
