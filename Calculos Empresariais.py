@@ -69,15 +69,22 @@ while True:
         print('~~' * 21)
 
     elif op == 2:
-        hMes = int(input('Quantas Horas voce trabalhou esse mes?-> '))
         hDia = int(input('Quantas horas voce trabalhou nesse dia?-> '))
-        hora = salBruto / hMes
+        print('Considerando 220 horas trabalhadas')
+        hora = salBruto / 220
         dia = hora * hDia
         print(f'{nome}, Com o salario de R${salBruto:.2f}\n'
               f'Você recebe R${dia:.2f} por dia e R${hora:.2f}/hora')
         print('~~' * 21)
 
     elif op == 3:
+        anos = leiaInt('Quantos anos voce trabalha nessa empresa? ->')
+        fgts = salBruto * 0.08
+        fgtsMeses = anos * 12
+        totFgts = fgtsMeses * fgts
+        print(totFgts)
+        print(f'{fgts:.2f}')
+
         print('{:^40}'.format('Em contrução'))
         print('~~' * 21)
 
@@ -87,5 +94,5 @@ while True:
                   'Sua Opção-> ')
     if op2 == 2:
         break
-
+aa
 print('\n\033[31mPrograma finalizado, Volte Sempre\033[m')
