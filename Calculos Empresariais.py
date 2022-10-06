@@ -94,5 +94,4 @@ while True:
                   'Sua Opção-> ')
     if op2 == 2:
         break
-aa
 print('\n\033[31mPrograma finalizado, Volte Sempre\033[m')
