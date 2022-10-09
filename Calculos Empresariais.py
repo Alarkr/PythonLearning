@@ -42,11 +42,11 @@ while True:
           '[ 1 ] Calcular hora extra\n'
           '[ 2 ] Mostrar quanto Recebo por Dia e Hora\n'
           '[ 3 ] Calcular 40% do FGTS')
-    op = int(input('Qual sua opção? -> '))
+    op = leiaInt('Qual sua opção? -> ')
     print('~~' * 21)
 
     if op == 1:
-        hMes = leiaInt('Quantas Horas voce trabalhou esse mes?')
+        hMes = 220
         hNor = leiaFloat('Quantas horas 50% voce fez?-> ')
         hCem = leiaFloat('Quantos horas 100% voce trabalhou?-> ')
 
@@ -79,13 +79,22 @@ while True:
 
     elif op == 3:
         anos = leiaInt('Quantos anos voce trabalha nessa empresa? ->')
+        q = leiaInt('Voce irá receber 40% na demissão?\n'
+                    '[ 1 ] Sim\n'
+                    '[ 2 ] Não\n'
+                    'Sua Opção -> ')
         fgts = salBruto * 0.08
         fgtsMeses = anos * 12
         totFgts = fgtsMeses * fgts
-        print(totFgts)
-        print(f'{fgts:.2f}')
-
-        print('{:^40}'.format('Em contrução'))
+        fgts40 = totFgts + (totFgts * 0.4)
+        print(f'{nome}, voce recebe R${fgts:.2f} de fgts por mês')
+        if q == 1:
+            print(f'Trabalhando na empresa por {anos} anos,\n'
+                  f'e recebendo 40% da empresa'
+                  f'voce tem direito receber R${fgts40} de FGTS')
+        elif q == 2:
+            print(f'Trabalhando na empresa por {anos} anos,\n'
+                  f'voce tem direito receber R${totFgts} de FGTS')
         print('~~' * 21)
 
     op2 = leiaInt('Deseja Realizar outra operação?\n'
