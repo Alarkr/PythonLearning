@@ -8,7 +8,7 @@ def leiaInt(msg):
     ok = False
     valor = 0
     while True:
-        n = str(input(msg))
+        n = str(input(msg)).strip().lower()
         if n.isnumeric():
             valor = int(n)
             ok = True
@@ -91,10 +91,10 @@ while True:
         if q == 1:
             print(f'Trabalhando na empresa por {anos} anos,\n'
                   f'e recebendo 40% da empresa'
-                  f'voce tem direito receber R${fgts40} de FGTS')
+                  f'voce tem direito receber R${fgts40:.2f} de FGTS')
         elif q == 2:
             print(f'Trabalhando na empresa por {anos} anos,\n'
-                  f'voce tem direito receber R${totFgts} de FGTS')
+                  f'voce tem direito receber R${totFgts:.2f} de FGTS')
         print('~~' * 21)
 
     op2 = leiaInt('Deseja Realizar outra operação?\n'
